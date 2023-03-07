@@ -1,8 +1,5 @@
-print("Мультипарадигмальні мови програмування, Task 1")
-print("Nikita Rosyk gr. IKM-221k, №15")
-for i in range(0, 45):
-    if i == 44:
-        print("Владислав Валерійович Овсяніков")
-    else:
-        print("Владислав Валерійович Овсяніков, ")
-print((11.2/(11.2-211.3))+(1.2/(15.2+11.3)))
+print('Multiparadigm programming languages, Task 1')
+print('Nikita Rosyk gr. IKM-221k, №15')
+full_name = 'Vladislav Valeriyovych Ovsyanikov'
+print(', '.join([full_name] * 45))
+print((11.2 / (11.2 - 211.3)) + (1.2 / (15.2 + 11.3)))
