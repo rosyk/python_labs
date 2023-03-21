@@ -5,6 +5,9 @@ ignore:
   - ^docs/
   - ^build/
   - venv
+  - Rosyk_Task1.py
+  - Rosyk_Task2.py
+  - Rosyk_Task3.py
 
 test-warnings: true
 
