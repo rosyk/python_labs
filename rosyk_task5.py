@@ -2,18 +2,18 @@
 # Rosyk Nikita, №15
 
 
-def row_sum(e):
+def row_sum(eps):
     series_sum = 0
     n = 1
-    a = 1
+    row_number = 1
     try:
-        while abs(a) >= e:
-            a = n / (n-1) ** 2
-            series_sum += a
+        while abs(row_number) >= eps:
+            row_number = n / (n - 1) ** 2
+            series_sum += row_number
             n += 1
     except ZeroDivisionError:
-        a = 'infinity. series diverges'
-    return a
+        series_sum = 'infinity. series diverges'
+    return series_sum
 
 
 def numbers_amount(num):
@@ -24,11 +24,11 @@ def numbers_amount(num):
     return i
 
 
-def geron_sqrt(num, e):
+def geron_sqrt(num, eps):
     x = 1
     while True:
         x_n = (x + num / x) / 2
-        if abs(x - x_n) < e * x_n:
+        if abs(x - x_n) < eps * x_n:
             break
         x = x_n
     return x
@@ -38,7 +38,7 @@ if __name__ == '__main__':
     print('Multiparadigm programming languages, Task 2')
     print('Nikita Rosyk gr. IKM-221k, №15')
 
-    eps = 0.0001
-    print(f'row sum = {row_sum(eps)}')
+    EPSILON = 0.0001
+    print(f'row sum = {row_sum(EPSILON)}')
     print(f'amount of numbers is {numbers_amount(123456789)}')
-    print(f'square root is {geron_sqrt(25, eps):.4f}')
+    print(f'square root is {geron_sqrt(25, EPSILON):.4f}')
