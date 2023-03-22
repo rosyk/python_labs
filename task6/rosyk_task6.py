@@ -1,10 +1,10 @@
-from utils import number_validation_input
 import sqlite3 as sql
+from utils import number_validation_input
 
 
 def numbers_sum():
     result = 0
-    with open('numbers.txt') as file, open('sum_numbers.txt', 'w') as output:
+    with open('numbers.txt', encoding='utf8') as file, open('sum_numbers.txt', 'w', encoding='utf8') as output:
         for line in file:
             try:
                 result += float(line)
@@ -15,20 +15,20 @@ def numbers_sum():
 
 
 def odd_even_write():
-    with open('even_or_odd.txt', 'w') as file:
-        n = number_validation_input()
-        file.write(f'{n} is even') if n % 2 == 0 else file.write(f'{n} is odd')
+    with open('even_or_odd.txt', 'w', encoding='utf8') as file:
+        number = number_validation_input()
+        file.write(f'{number} is even') if number % 2 == 0 else file.write(f'{number} is odd')
 
 
 def python_posibilities_print():
-    with open('learning_python.txt') as file:
-        lines = file.readlines()
-    for i in range(len(lines)):
-        print(lines[i])
+    with open('learning_python.txt', encoding='utf8') as file:
+        text = file.readlines()
+    for line in text:
+        print(line)
 
 
 def python_change():
-    with open('learning_python.txt') as file:
+    with open('learning_python.txt', encoding='utf8') as file:
         for line in file:
             print(line.replace('Python', 'C'))
 
@@ -39,22 +39,22 @@ def guests_greeting():
         if name == 'exit':
             break
         greeting = f'Welcome, {name}. Have a nice day!'
-        with open('guest_book.txt', 'w') as file:
+        with open('guest_book.txt', 'w', encoding='utf8') as file:
             file.write(greeting)
         print(greeting)
 
 
 def the_counter():
     counter = 0
-    with open('book.txt') as book:
+    with open('book.txt', encoding='utf8') as book:
         for line in book:
             counter += line.count('the')
     print(counter)
 
 
 def text_format():
-    with open('book.txt') as book, open('formatted_text.txt', 'w') as ft:
-        ft.write(book.read().replace('\n', ' '))
+    with open('book.txt', encoding='utf8') as book, open('formatted_text.txt', 'w', encoding='utf8') as formatted_text:
+        formatted_text.write(book.read().replace('\n', ' '))
 
 
 def chapters_write():
@@ -65,7 +65,7 @@ def chapters_write():
 
 
 def small_big_letters():
-    with open('book.txt') as file:
+    with open('book.txt', encoding='utf8') as file:
         text = file.read()
         alpha_text = []
         for char in text:
