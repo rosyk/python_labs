@@ -1,6 +1,6 @@
-import numpy as np
 from io import BytesIO
 from PIL import Image
+import numpy as np
 import requests
 
 # L1
