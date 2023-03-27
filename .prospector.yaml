@@ -31,6 +31,7 @@ pylint:
         # raising errors such as: E1101: Module 'pytest' has
         # no 'mark' member
         ignored-classes: pytest
+        good-names: x, y, n
     disable:
         # Too many lines in module
         - C0302
