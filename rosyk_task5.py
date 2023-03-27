@@ -17,11 +17,11 @@ def row_sum(eps):
 
 
 def numbers_amount(num):
-    i = 0
+    char_count = 0
     while num > 0:
-        i += 1
+        char_count += 1
         num //= 10
-    return i
+    return char_count
 
 
 def geron_sqrt(num, eps):
