@@ -18,7 +18,7 @@ class Vector:
         self.y = end.y - start.y
 
     def __str__(self):
-        return f'({self.start}, {self.end})'
+        return f'({self.x}, {self.y})'
 
     def length(self):
         return m.sqrt(self.x ** 2 + self.y ** 2)
