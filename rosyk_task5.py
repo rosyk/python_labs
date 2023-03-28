@@ -1,19 +1,11 @@
 # Multiparadigm programming languages, Task 2
 # Rosyk Nikita, №15
+from itertools import takewhile, count
 
 
 def row_sum(eps):
-    series_sum = 0
-    n = 1
-    row_number = 1
-    try:
-        while abs(row_number) >= eps:
-            row_number = n / (n - 1) ** 2
-            series_sum += row_number
-            n += 1
-    except ZeroDivisionError:
-        series_sum = 'infinity. series diverges'
-    return series_sum
+    row = (n / (n - 1) ** 2 for n in count())
+    return sum(list(takewhile(lambda x: x >= eps, row)))
 
 
 def numbers_amount(num):
