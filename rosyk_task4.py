@@ -1,7 +1,6 @@
-from utils import number_validation_input
-
 # Multiparadigm programming languages, Task 2
 # Rosyk Nikita, №15
+from utils import number_validation_input
 
 
 def is_prime(num):
