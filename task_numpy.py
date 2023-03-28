@@ -9,7 +9,6 @@ arr = np.arange(0, 10)
 arr[arr % 2 == 1] = -1
 print(arr)
 
-
 # L2
 # Insert np.nan values at 20 random positions in iris_2d dataset
 url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
@@ -23,7 +22,6 @@ arr = np.random.uniform(1, 50, 20)
 print(arr)
 ind = np.argpartition(-arr, 5)[:5]
 print(arr[ind])
-
 
 # L3
 # Find the duplicate entries (2nd occurrence onwards) in the given numpy array and mark them as True. First time occurrences should be False
@@ -50,30 +48,18 @@ arr = np.asarray(image_bytes)
 img = Image.fromarray(np.uint8(arr))
 Image.Image.show(img)
 
-
 # L4
 # Find all the peaks in a 1D numpy array a. Peaks are points surrounded by smaller values on both sides
 a = np.array([1, 3, 7, 1, 2, 6, 0, 1])
-peaks = []
-for i in range(1, len(a) - 1):
-    if a[i - 1] < a[i] and a[i + 1] < a[i]:
-        peaks.append(a[i])
+peaks = [a[i] for i in range(1, len(a)-1) if a[i-1] < a[i] and a[i+1] < a[i]]
 print(peaks)
 
 # Compute the counts of unique values row-wise.
 np.random.seed(100)
 arr = np.random.randint(1, 11, size=(6, 10))
 value_count = [np.unique(row, return_counts=True) for row in arr]
-result = []
-for a, b in value_count:
-    inner_result = []
-    for i in np.unique(arr):
-        if i in a:
-            inner_result.append(int(b[a == i]))
-        else:
-            inner_result.append(0)
-    result.append(inner_result)
-print(result)
+result = [[int(b[a == i]) if i in a else 0 for i in np.unique(arr)]
+          for a, b in value_count]
 
 # Compute the one-hot encodings (dummy binary variables for each unique value in the array)
 np.random.seed(101)
