@@ -10,7 +10,7 @@ def row_sum(eps):
 
 def numbers_amount(num):
     char_count = 0
-    while num > 0:
+    while num:
         char_count += 1
         num //= 10
     return char_count
