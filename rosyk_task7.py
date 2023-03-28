@@ -3,8 +3,16 @@ import math as m
 
 class Point:
     def __init__(self, x, y):
-        self.x = x
-        self.y = y
+        self.__x = x
+        self.__y = y
+
+    @property
+    def x(self):
+        return self.__x
+
+    @property
+    def y(self):
+        return self.__y
 
     def __str__(self):
         return f"({self.x}, {self.y})"
@@ -12,22 +20,31 @@ class Point:
 
 class Vector:
     def __init__(self, start, end):
-        self.start = start
-        self.end = end
-        self.x = end.x - start.x
-        self.y = end.y - start.y
+        self.__start = start
+        self.__end = end
+        self.__x = end.x - start.x
+        self.__y = end.y - start.y
+
+    @property
+    def x(self):
+        return self.__x
+
+    @property
+    def y(self):
+        return self.__y
+
+    @property
+    def length(self):
+        return m.sqrt(self.__x ** 2 + self.__y ** 2)
 
     def __str__(self):
-        return f'({self.x}, {self.y})'
+        return f'({self.__x}, {self.__y})'
 
-    def length(self):
-        return m.sqrt(self.x ** 2 + self.y ** 2)
+    def __add__(self, vector):
+        return Vector(self.__start, Point(self.__end.x + vector.x, self.__end.y + vector.y))
 
-    def add(self, vector):
-        return Vector(self.start, Point(self.end.x + vector.x, self.end.y + vector.y))
-
-    def subtract(self, vector):
-        return Vector(self.start, Point(self.end.x - vector.x, self.end.y - vector.y))
+    def __sub__(self, vector):
+        return Vector(self.__start, Point(self.__end.x - vector.x, self.__end.y - vector.y))
 
 
 if __name__ == '__main__':
@@ -35,8 +52,6 @@ if __name__ == '__main__':
     second_vector = Vector(Point(9, 1), Point(6, 3))
 
     print(first_vector)
-    print(first_vector.length())
+    print(first_vector.length)
 
-    added_vector = first_vector.add(second_vector)
-    subtracted_vector = first_vector.subtract(second_vector)
-    print(added_vector, subtracted_vector)
+    print(first_vector + second_vector, first_vector - second_vector)
