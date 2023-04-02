@@ -4,7 +4,8 @@ from utils import number_validation_input
 
 def numbers_sum():
     result = 0
-    with open('numbers.txt', encoding='utf8') as file, open('sum_numbers.txt', 'w', encoding='utf8') as output:
+    with open('numbers.txt', encoding='utf8') as file, \
+            open('sum_numbers.txt', 'w', encoding='utf8') as output:
         for line in file:
             try:
                 result += float(line)
@@ -53,12 +54,14 @@ def the_counter():
 
 
 def text_format():
-    with open('book.txt', encoding='utf8') as book, open('formatted_text.txt', 'w', encoding='utf8') as formatted_text:
+    with open('book.txt', encoding='utf8') as book, \
+            open('formatted_text.txt', 'w', encoding='utf8') as formatted_text:
         formatted_text.write(book.read().replace('\n', ' '))
 
 
 def chapters_write():
-    with open('robinson_crusoe.txt', encoding='utf8') as book, open('chapters.txt', 'w', encoding='utf8') as chapters:
+    with open('robinson_crusoe.txt', encoding='utf8') as book, \
+            open('chapters.txt', 'w', encoding='utf8') as chapters:
         for line in book:
             if 'CHAPTER' in line:
                 chapters.write(line)
@@ -71,14 +74,17 @@ def small_big_letters():
         for char in text:
             if char.isalpha():
                 alpha_text.append(char)
-        print(
-            f'small letters: {sum(i.islower() for i in alpha_text) / len(alpha_text) * 100}%, big letters: {sum(i.isupper() for i in alpha_text) / len(alpha_text) * 100}%')
+        print(f'small letters: {sum(i.islower() for i in alpha_text) / len(alpha_text) * 100}%, '
+              f'big letters: {sum(i.isupper() for i in alpha_text) / len(alpha_text) * 100}%')
 
 
 def imdb_rating():
     conn = sql.connect('imdb.db')
     curs = conn.cursor()
-    curs.execute('CREATE TABLE ratings (id INTEGER PRIMARY KEY, title VARCHAR(20), year INT, rating FLOAT)')
+    curs.execute('CREATE TABLE ratings (id INTEGER PRIMARY KEY, '
+                 'title VARCHAR(20), '
+                 'year INT, '
+                 'rating FLOAT)')
     curs.execute('INSERT INTO ratings VALUES(0, "The last of us", 2023, 9.0)')
     curs.execute('INSERT INTO ratings VALUES(1, "Everything Everywhere All at Once", 2022, 7.9)')
     curs.execute('INSERT INTO ratings VALUES(2, "Avatar: way of water", 2023, 7.8)')
