@@ -7,11 +7,3 @@ def number_validation_input():
             return int(input('enter n: '))
         except ValueError:
             print(ERROR)
-
-
-def string_validation_input(prompt):
-    while True:
-        try:
-            return str(input(prompt))
-        except ValueError:
-            print(ERROR)

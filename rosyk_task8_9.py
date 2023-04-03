@@ -37,7 +37,7 @@ def odd_even():
 
 
 def number_of_days():
-    month = utils.string_validation_input('input month: ')
+    month = input('input month: ')
     for i in range(len(calendar.month_name)):
         if calendar.month_name[i].lower() == month.lower():
             print(f'in {month} {calendar.monthrange(2023, i)[1]} days')
