@@ -24,8 +24,7 @@ def odd_even_write():
 def python_posibilities_print():
     with open('learning_python.txt', encoding='utf8') as file:
         text = file.readlines()
-    for line in text:
-        print(line)
+    list(map(print, text))
 
 
 def python_change():
@@ -46,11 +45,8 @@ def guests_greeting():
 
 
 def the_counter():
-    counter = 0
     with open('book.txt', encoding='utf8') as book:
-        for line in book:
-            counter += line.count('the')
-    print(counter)
+        print(book.read().lower().count('the'))
 
 
 def text_format():
@@ -62,20 +58,15 @@ def text_format():
 def chapters_write():
     with open('robinson_crusoe.txt', encoding='utf8') as book, \
             open('chapters.txt', 'w', encoding='utf8') as chapters:
-        for line in book:
-            if 'CHAPTER' in line:
-                chapters.write(line)
+        lines = [line for line in book if 'CHAPTER' in line]
+        chapters.writelines(lines)
 
 
 def small_big_letters():
     with open('book.txt', encoding='utf8') as file:
-        text = file.read()
-        alpha_text = []
-        for char in text:
-            if char.isalpha():
-                alpha_text.append(char)
-        print(f'small letters: {sum(i.islower() for i in alpha_text) / len(alpha_text) * 100}%, '
-              f'big letters: {sum(i.isupper() for i in alpha_text) / len(alpha_text) * 100}%')
+        alpha_text = [char for char in file.read() if char.isalpha()]
+        upper_perc = sum(i.islower() for i in alpha_text) / len(alpha_text) * 100
+        print(f'small letters: {upper_perc}%, big letters: {100 - upper_perc}%')
 
 
 def imdb_rating():
