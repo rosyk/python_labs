@@ -8,6 +8,7 @@ ignore:
   - Rosyk_Task1.py
   - Rosyk_Task2.py
   - Rosyk_Task3.py
+  - task_numpy.py
 
 test-warnings: true
 
