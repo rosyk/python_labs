@@ -37,10 +37,12 @@ def odd_even():
 
 
 def number_of_days():
-    month = input('input month: ')
-    for i in range(len(calendar.month_name)):
-        if calendar.month_name[i].lower() == month.lower():
-            print(f'in {month} {calendar.monthrange(2023, i)[1]} days')
+    month = input('input month: ').lower().title()
+    try:
+        month_num = list(calendar.month_name).index(month)
+        print(f'in {month} {calendar.monthrange(2023, month_num)[1]} days')
+    except(ValueError):
+        print('month doesn`t exist')
 
 
 def ordinary_leap_year(year):
@@ -97,7 +99,7 @@ def cell_color():
     if len(cell) != 2 or cell[0] not in 'abcdefgh' or cell[1] not in '12345678':
         print("incorrect cell")
     else:
-        print('cell is black' if (ord(cell[0])) % 2 == int(cell[1]) % 2 else 'cell is black')
+        print('cell is black' if (ord(cell[0])) % 2 == int(cell[1]) % 2 else 'cell is white')
 
 
 def decimal_to_binary(number):
@@ -131,7 +133,7 @@ def check_win(player_move, computer_move):
 def rock_paper_scissors():
     options = ['rock', 'paper', 'scissors']
     while True:
-        player_move = input('input your move(rock, paper, scisoors): ').lower()
+        player_move = input('input your move(rock, paper, scissors): ').lower()
         if player_move not in options:
             print('wrong move')
             continue
@@ -143,15 +145,15 @@ def rock_paper_scissors():
 
 
 if __name__ == '__main__':
-    site_users_greeting(['Admin', 'Alex', 'Steve'])
-    figure_name(6)
-    ordinals(list(range(1, 10)))
-    odd_even()
-    number_of_days()
-    ordinary_leap_year(2100)
-    numbers_sum()
-    calculator()
-    person_on_money(3)
+    # site_users_greeting(['Admin', 'Alex', 'Steve'])
+    # figure_name(6)
+    # ordinals(list(range(1, 10)))
+    # odd_even()
+    # number_of_days()
+    # ordinary_leap_year(2100)
+    # numbers_sum()
+    # calculator()
+    # person_on_money(3)
     cell_color()
-    decimal_to_binary(155)
-    rock_paper_scissors()
+    # decimal_to_binary(155)
+    # rock_paper_scissors()
