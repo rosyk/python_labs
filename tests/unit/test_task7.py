@@ -10,24 +10,24 @@ def test_vector_init():
 
 
 @pytest.fixture()
-def first_vector():
+def return_first_vector():
     return Vector(Point(0, 0), Point(5, 8))
 
 
 @pytest.fixture()
-def second_vector():
+def return_second_vector():
     return Vector(Point(9, 1), Point(6, 3))
 
 
 @pytest.fixture()
-def zero_vector():
+def return_zero_vector():
     return Vector(Point(0, 0), Point(0, 0))
 
 
 @pytest.mark.parametrize('vectors, expected',
-                         [(['first_vector', 'second_vector'],
+                         [(['return_first_vector', 'return_second_vector'],
                            {'x': 2, 'y': 10}),
-                          (['zero_vector', 'zero_vector'],
+                          (['return_zero_vector', 'return_zero_vector'],
                            {'x': 0, 'y': 0})])
 def test_vector_addition(vectors, expected, request):
     first_vector = request.getfixturevalue(vectors[0])
@@ -39,9 +39,9 @@ def test_vector_addition(vectors, expected, request):
 
 
 @pytest.mark.parametrize('vectors, expected',
-                         [(['first_vector', 'second_vector'],
+                         [(['return_first_vector', 'return_second_vector'],
                            {'x': 8, 'y': 6}),
-                          (['zero_vector', 'zero_vector'],
+                          (['return_zero_vector', 'return_zero_vector'],
                            {'x': 0, 'y': 0})])
 def test_vector_subtraction(vectors, expected, request):
     first_vector = request.getfixturevalue(vectors[0])
