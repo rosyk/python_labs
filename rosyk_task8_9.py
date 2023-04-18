@@ -41,7 +41,7 @@ def number_of_days():
     try:
         month_num = list(calendar.month_name).index(month)
         print(f'in {month} {calendar.monthrange(2023, month_num)[1]} days')
-    except(ValueError):
+    except ValueError:
         print('month doesn`t exist')
 
 
@@ -120,14 +120,13 @@ def decimal_to_binary(number):
 def check_win(player_move, computer_move):
     if player_move == computer_move:
         return 'draw!'
-    elif player_move == 'rock' and computer_move == 'scissors':
+    if player_move == 'rock' and computer_move == 'scissors':
         return 'you win!'
-    elif player_move == 'scissors' and computer_move == 'paper':
+    if player_move == 'scissors' and computer_move == 'paper':
         return 'you win!'
-    elif player_move == 'paper' and computer_move == 'rock':
+    if player_move == 'paper' and computer_move == 'rock':
         return 'you win!'
-    else:
-        return 'you lose!'
+    return 'you lose!'
 
 
 def rock_paper_scissors():
@@ -145,15 +144,15 @@ def rock_paper_scissors():
 
 
 if __name__ == '__main__':
-    # site_users_greeting(['Admin', 'Alex', 'Steve'])
-    # figure_name(6)
-    # ordinals(list(range(1, 10)))
-    # odd_even()
-    # number_of_days()
-    # ordinary_leap_year(2100)
-    # numbers_sum()
-    # calculator()
-    # person_on_money(3)
+    site_users_greeting(['Admin', 'Alex', 'Steve'])
+    figure_name(6)
+    ordinals(list(range(1, 10)))
+    odd_even()
+    number_of_days()
+    ordinary_leap_year(2100)
+    numbers_sum()
+    calculator()
+    person_on_money(3)
     cell_color()
-    # decimal_to_binary(155)
-    # rock_paper_scissors()
+    decimal_to_binary(155)
+    rock_paper_scissors()
