@@ -11,6 +11,7 @@ def numbers_sum():
                 result += float(line)
             except ValueError:
                 print('file contains something except numbers')
+                return
         output.write(str(result))
     print(result)
 
@@ -92,13 +93,13 @@ def imdb_rating():
 
 
 if __name__ == '__main__':
-    numbers_sum()
-    odd_even_write()
-    python_posibilities_print()
-    python_change()
-    guests_greeting()
-    the_counter()
-    text_format()
-    chapters_write()
+    # numbers_sum()
+    # odd_even_write()
+    # python_posibilities_print()
+    # python_change()
+    # guests_greeting()
+    # the_counter()
+    # text_format()
+    # chapters_write()
     small_big_letters()
-    imdb_rating()
+    # imdb_rating()
