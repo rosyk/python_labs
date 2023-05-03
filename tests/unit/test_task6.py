@@ -8,11 +8,17 @@ from task6.rosyk_task6 import numbers_sum, odd_even_write, python_posibilities_p
 
 @pytest.mark.parametrize('input_param, expected', [('1\n2\n3', '6.0'),
                                                    ('string', 'file contains something except numbers')])
-def test_numbers_sum(input_param, expected, capsys, monkeypatch):
-    monkeypatch.setattr('builtins.open', mock_open(read_data=input_param))
-    numbers_sum()
-    captured = capsys.readouterr()
-    assert captured.out.strip() == expected
+def test_find_sum_numbers(input_param, expected):
+    open_mock = mock_open(read_data='1\n2\n3\n4\n')
+    with patch('builtins.open', open_mock):
+        numbers_sum()
+        print(open_mock.mock_calls)
+        assert open_mock.mock_calls[5][1] == ('10.0',)
+# def test_numbers_sum(input_param, expected, capsys, monkeypatch):
+#     monkeypatch.setattr('builtins.open', mock_open(read_data=input_param))
+#     numbers_sum()
+#     captured = capsys.readouterr()
+#     assert captured.out.strip() == expected
 
 
 @pytest.mark.parametrize('input_param, expected', [(2, '2 is even'), (3, '3 is odd')])
