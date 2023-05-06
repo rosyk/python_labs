@@ -14,8 +14,6 @@ def test_vector_init():
     assert vector.y == 8
 
 
-
-
 @pytest.mark.parametrize('vectors, expected',
                          [([FIRST_VECTOR, SECOND_VECTOR],
                            {'x': 2, 'y': 10}),
