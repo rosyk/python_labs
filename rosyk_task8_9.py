@@ -52,7 +52,7 @@ def ordinary_leap_year(year):
 def numbers_sum():
     numbers = []
     n = 1
-    while n != 0:
+    while n:
         n = utils.number_validation_input()
         numbers.append(n)
     print(sum(numbers))
@@ -96,10 +96,10 @@ def person_on_money(nominal):
 
 def cell_color():
     cell = input('input cell in format a1: ')
-    if len(cell) != 2 or cell[0] not in 'abcdefgh' or cell[1] not in '12345678':
-        print("incorrect cell")
-    else:
+    if len(cell) == 2 or cell[0] in 'abcdefgh' or cell[1] in '12345678':
         print('cell is black' if (ord(cell[0])) % 2 == int(cell[1]) % 2 else 'cell is white')
+    else:
+        print("incorrect cell")
 
 
 def decimal_to_binary(number):

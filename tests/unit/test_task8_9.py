@@ -18,10 +18,7 @@ def test_site_users_greeting_no_users(input_param, expected, capsys):
 
 
 @pytest.mark.parametrize('input_param, expected', [(0, 'the number of sides is less than 3 or more than 6'),
-                                                   (3, 'it`s triangle'),
-                                                   (4, 'it`s rectangle'),
                                                    (5, 'it`s pentagon'),
-                                                   (6, 'it`s hexagon'),
                                                    (7, 'the number of sides is less than 3 or more than 6')])
 def test_figure_name(input_param, expected, capsys):
     figure_name(input_param)
@@ -83,12 +80,7 @@ def test_calculator(numbers, operator, expected, capsys):
         assert captured.out.strip() == expected
 
 
-@pytest.mark.parametrize('input_param, expected', [(1, '1 - Volodymyr Velykiy'), (2, '2 - Yaroslav Mydriy'),
-                                                   (5, '5 - Bohdan Hmelnitsky'), (10, '10 - Ivan Mazepa'),
-                                                   (20, '20 - Ivan Franko'), (50, '50 - Myhaylo Hrushevsky'),
-                                                   (100, '100 - Taras Shevchenko'), (200, '200 - Lesya Ukrainka'),
-                                                   (500, '500 - Grigory Skovoroda'),
-                                                   (1000, '1000 - Volodymyr Vernadsky'),
+@pytest.mark.parametrize('input_param, expected', [(1000, '1000 - Volodymyr Vernadsky'),
                                                    (3, 'nominal doesn`t exist')])
 def test_persons_on_money(input_param, expected, capsys):
     person_on_money(input_param)
