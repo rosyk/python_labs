@@ -1,9 +1,8 @@
-import pytest
 from unittest.mock import patch, mock_open
 from io import StringIO
-
-import utils
-from task6.rosyk_task6 import numbers_sum, odd_even_write, python_posibilities_print, python_change, guests_greeting, the_counter, text_format, chapters_write, small_big_letters
+import pytest
+from task6.rosyk_task6 import numbers_sum, odd_even_write, python_posibilities_print, python_change, \
+    guests_greeting, the_counter, text_format, chapters_write, small_big_letters
 
 
 @pytest.mark.parametrize('input_param, expected', [('1\n2\n3', ('6.0',))])
@@ -46,12 +45,11 @@ def test_python_change(input_param, expected, monkeypatch, capsys):
     assert captured.out.strip() == expected
 
 
-
 @pytest.mark.parametrize('input_param, expected', [(['Alex', 'exit'], 'Welcome, Alex. Have a nice day!'),
                                                    (['Alex', 'John', 'exit'],
                                                     'Welcome, Alex. Have a nice day!\n'
                                                     'Welcome, John. Have a nice day!')])
-def test_guests_greeting(input_param, expected, monkeypatch, capsys):
+def test_guests_greeting(input_param, expected, capsys):
     with patch('builtins.input', side_effect=input_param):
         with patch('builtins.open', mock_open(read_data='')):
             guests_greeting()
@@ -69,7 +67,7 @@ def test_the_counter(input_param, expected, capsys, monkeypatch):
 
 
 @pytest.mark.parametrize('input_param, expected', [('two\nlines', ('two lines',))])
-def test_text_format(input_param, expected, monkeypatch):
+def test_text_format(input_param, expected):
     with patch('builtins.open', mock_open(read_data=input_param)):
         text_format()
         print(open.mock_calls)
