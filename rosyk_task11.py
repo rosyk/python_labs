@@ -36,8 +36,7 @@ def find_student_phone(line):
     student_phone = re.search(student_phone_pattern, line)
     if student_phone is not None:
         return '+380' + student_phone.group(0)[-9:]
-    else:
-        return 'no phone'
+    return 'no phone'
 
 
 def find_number(line):
@@ -66,6 +65,17 @@ def create_dict():
     return students_dict
 
 
+def create_years_dict():
+    years_dict = {}
+    with open('event.txt', 'r', encoding='utf-8') as file:
+        for line_number, line in enumerate(file):
+            years = re.findall(r'\b\d{3,4}', line)
+            for year in years:
+                years_dict.update({year: line_number})
+    return years_dict
+
+
 if __name__ == '__main__':
     create_letter()
     print(create_dict())
+    print(create_years_dict())
