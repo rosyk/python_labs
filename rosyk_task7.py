@@ -17,6 +17,7 @@ class Point:
     def __str__(self):
         return f"({self.x}, {self.y})"
 
+
 class Vector:
     def __init__(self, start, end):
         self.__start = start
