@@ -9,6 +9,9 @@ def row_sum(eps):
 
 
 def numbers_amount(num):
+    if num == 0:
+        return 1
+    num = abs(num)
     char_count = 0
     while num:
         char_count += 1
@@ -17,6 +20,10 @@ def numbers_amount(num):
 
 
 def geron_sqrt(num, eps):
+    if num < 0:
+        raise ValueError
+    if num == 0:
+        return 0
     x = 1
     while True:
         x_n = (x + num / x) / 2
@@ -33,4 +40,4 @@ if __name__ == '__main__':
     EPSILON = 0.0001
     print(f'row sum = {row_sum(EPSILON)}')
     print(f'amount of numbers is {numbers_amount(123456789)}')
-    print(f'square root is {geron_sqrt(25, EPSILON):.4f}')
+    print(f'square root is {geron_sqrt(0, EPSILON):.4f}')
