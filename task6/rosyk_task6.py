@@ -19,7 +19,7 @@ def numbers_sum():
 def odd_even_write():
     with open('even_or_odd.txt', 'w', encoding='utf8') as file:
         number = number_validation_input()
-        file.write(f'{number} is even') if number % 2 == 0 else file.write(f'{number} is odd')
+        file.write(f'{number} is even' if number % 2 == 0 else f'{number} is odd')
 
 
 def python_posibilities_print():
