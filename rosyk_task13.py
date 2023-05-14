@@ -15,7 +15,7 @@ class Menu(Screen):
     game_size = 4
 
     def __init__(self, game_size=4, **kwargs):
-        super(Menu, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.game_size = game_size
         self.layout = BoxLayout(orientation='vertical')
         title = Label(text='memory tile game', font_size=48)
@@ -35,7 +35,7 @@ class Menu(Screen):
 class Tile(Button):
 
     def __init__(self, tile_color, **kwargs):
-        super(Tile, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.tile_color = tile_color
         # self.color = [1, 1, 1, 1]
         self.background_normal = ''
@@ -49,15 +49,15 @@ class Game(Screen):
     in_game_tiles = None
 
     def __init__(self, size, **kwargs):
-        super(Game, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         layout = GridLayout(cols=size, spacing=2)
         self.add_widget(layout)
-        empty_tiles_indexes = [i for i in range(size ** 2)]
+        empty_tiles_indexes = list(range(size**2))
         tiles = [None for _ in range(size ** 2)]
         for i in range(int((size ** 2) / 2)):
             color = list(np.random.choice(np.arange(0, 1.1, 0.1), size=3))
             color.append(1)
-            for j in range(2):
+            for _ in range(2):
                 index = np.random.choice(empty_tiles_indexes)
                 tiles[index] = Tile(tile_color=color, on_press=self.tile_press_show_color)
                 self.ids['tile' + str(index)] = tiles[index]
