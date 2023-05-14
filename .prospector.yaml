@@ -9,6 +9,7 @@ ignore:
   - Rosyk_Task2.py
   - Rosyk_Task3.py
   - task_numpy.py
+  - steam_sales
 
 test-warnings: true
 
