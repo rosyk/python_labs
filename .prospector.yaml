@@ -10,6 +10,7 @@ ignore:
   - Rosyk_Task3.py
   - task_numpy.py
   - printing_imitation.py
+  - steam_sales
 
 test-warnings: true
 
