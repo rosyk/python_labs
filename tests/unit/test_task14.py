@@ -1,6 +1,6 @@
 import pytest
-from unittest.mock import patch
-from rosyk_task14 import Multiset
+from unittest.mock import patch, MagicMock
+from rosyk_task14 import Multiset, exel_weather
 
 MULTISET = Multiset({1: 2})
 EMPTY_MULTISET = Multiset()
@@ -41,5 +41,5 @@ def test_union(input_param, expected):
 def test_intersrction(input_param, expected):
     assert str(input_param.intersection(Multiset({1: 3}))) == expected
 
-def test_exel_weather():
 
+# def test_read_mocked_excel_file(wb_mock):
