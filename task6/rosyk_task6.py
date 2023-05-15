@@ -71,9 +71,9 @@ def small_big_letters():
 
 
 def imdb_rating():
-    conn = sql.connect('imdb.db')
+    conn = sql.connect('task6/imdb.db')
     curs = conn.cursor()
-    curs.execute('CREATE TABLE ratings (id INTEGER PRIMARY KEY, '
+    curs.execute('CREATE TABLE IF NOT EXISTS ratings (id INTEGER PRIMARY KEY, '
                  'title VARCHAR(20), '
                  'year INT, '
                  'rating FLOAT)')
@@ -93,13 +93,13 @@ def imdb_rating():
 
 
 if __name__ == '__main__':
-    numbers_sum()
-    odd_even_write()
-    python_posibilities_print()
-    python_change()
-    guests_greeting()
-    the_counter()
-    text_format()
-    chapters_write()
-    small_big_letters()
+    # numbers_sum()
+    # odd_even_write()
+    # python_posibilities_print()
+    # python_change()
+    # guests_greeting()
+    # the_counter()
+    # text_format()
+    # chapters_write()
+    # small_big_letters()
     imdb_rating()

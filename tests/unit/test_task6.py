@@ -2,7 +2,7 @@ from unittest.mock import patch, mock_open
 from io import StringIO
 import pytest
 from task6.rosyk_task6 import numbers_sum, odd_even_write, python_posibilities_print, python_change, \
-    guests_greeting, the_counter, text_format, chapters_write, small_big_letters
+    guests_greeting, the_counter, text_format, chapters_write, small_big_letters, imdb_rating
 
 
 @pytest.mark.parametrize('input_param, expected', [('1\n2\n3', ('6.0',))])
@@ -90,3 +90,27 @@ def test_small_big_letters(input_param, expected, monkeypatch, capsys):
     small_big_letters()
     captured = capsys.readouterr()
     assert captured.out.strip() == expected
+
+
+def test_imdb_ratings(capsys):
+    with patch('task6.rosyk_task6.sql') as mock_sql:
+        mock_conn = mock_sql.connect.return_value
+        mock_cursor = mock_conn.cursor.return_value
+        mock_cursor.fetchone.return_value = (4,)
+        imdb_rating()
+        mock_sql.connect.assert_called_once_with('task6/imdb.db')
+        mock_cursor.execute.assert_any_call('CREATE TABLE IF NOT EXISTS ratings '
+                                            '(id INTEGER PRIMARY KEY, title VARCHAR(20), year INT, rating FLOAT)')
+        assert mock_cursor.execute.call_count == 7
+        mock_conn.commit.assert_called_once()
+    expected_return = '''(2, 'Avatar: way of water', 2023, 7.8)
+(1, 'Everything Everywhere All at Once', 2022, 7.9)
+(3, 'The Whale', 2023, 7.8)
+(0, 'The last of us', 2023, 9.0)
+(0, 'The last of us', 2023, 9.0)'''
+    imdb_rating()
+    captured = capsys.readouterr()
+    print(captured.out.strip())
+    print(expected_return)
+    print(captured.out.strip() == expected_return)
+    assert captured.out.strip() == expected_return
