@@ -1,6 +1,6 @@
-import pytest
 from copy import deepcopy
 from unittest.mock import patch
+import pytest
 from rosyk_task14 import Multiset, exel_weather
 
 MULTISET = Multiset({1: 2})

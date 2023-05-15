@@ -51,7 +51,6 @@ class Multiset:
 
 
 def exel_weather(city):
-    city = city
     url = 'https://sinoptik.ua/погода-' + city
     work_book = Workbook()
     work_sheet = work_book.active
