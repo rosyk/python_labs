@@ -5,7 +5,7 @@ from task6.rosyk_task6 import numbers_sum, odd_even_write, python_posibilities_p
     guests_greeting, the_counter, text_format, chapters_write, small_big_letters, imdb_rating
 
 
-@pytest.mark.parametrize('input_param, expected', [('1\n2\n3', ('6.0',))])
+@pytest.mark.parametrize('input_param, expected', [('1\n2\n3', ('6.0',)), ('0', ('0.0',))])
 def test_find_sum_numbers(input_param, expected):
     with patch('builtins.open', mock_open(read_data=input_param)):
         numbers_sum()
@@ -48,7 +48,8 @@ def test_python_change(input_param, expected, monkeypatch, capsys):
 @pytest.mark.parametrize('input_param, expected', [(['Alex', 'exit'], 'Welcome, Alex. Have a nice day!'),
                                                    (['Alex', 'John', 'exit'],
                                                     'Welcome, Alex. Have a nice day!\n'
-                                                    'Welcome, John. Have a nice day!')])
+                                                    'Welcome, John. Have a nice day!'),
+                                                   (['exit'], '')])
 def test_guests_greeting(input_param, expected, capsys):
     with patch('builtins.input', side_effect=input_param):
         with patch('builtins.open', mock_open(read_data='')):

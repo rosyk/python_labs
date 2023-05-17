@@ -93,13 +93,13 @@ def imdb_rating():
 
 
 if __name__ == '__main__':
-    # numbers_sum()
-    # odd_even_write()
-    # python_posibilities_print()
-    # python_change()
-    # guests_greeting()
-    # the_counter()
-    # text_format()
-    # chapters_write()
-    # small_big_letters()
+    numbers_sum()
+    odd_even_write()
+    python_posibilities_print()
+    python_change()
+    guests_greeting()
+    the_counter()
+    text_format()
+    chapters_write()
+    small_big_letters()
     imdb_rating()
