@@ -9,6 +9,7 @@ ignore:
   - Rosyk_Task2.py
   - Rosyk_Task3.py
   - task_numpy.py
+  - printing_imitation.py
   - steam_sales
   - task_tg_bot.py
   - rosyk_task13.py
