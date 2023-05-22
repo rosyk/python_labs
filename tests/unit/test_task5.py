@@ -3,9 +3,8 @@ import numpy as np
 from rosyk_task5 import row_sum, numbers_amount, geron_sqrt
 
 
-@pytest.mark.parametrize('input_param, expected', [(0.001, 0)])
-def test_row_sum(input_param, expected):
-    assert row_sum(input_param) == expected
+def test_row_sum():
+    assert row_sum(0.001) == 0
 
 
 @pytest.mark.parametrize('input_param, error',

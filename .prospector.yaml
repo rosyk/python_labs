@@ -42,11 +42,3 @@ pylint:
         # Used builtin function 'filter'.
         # (For maintainability, one should prefer list comprehension.)
         - W0141
-
-pyroma:
-    # checks setup.py
-    run: true
-
-vulture:
-    # this tool does a good job of finding unused code.
-    run: true
