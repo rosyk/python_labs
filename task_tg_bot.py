@@ -30,7 +30,7 @@ async def query_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 if __name__ == '__main__':
-    application = ApplicationBuilder().token('5138770695:AAFmmNVrXk6kyoPtliC4TZX2tNk4ekuZ1Q8').build()
+    application = ApplicationBuilder().token(TOKEN).build()
 
     start_handler = CommandHandler('start', start)
     application.add_handler(start_handler)
