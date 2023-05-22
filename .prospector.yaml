@@ -10,6 +10,8 @@ ignore:
   - Rosyk_Task3.py
   - task_numpy.py
   - steam_sales
+  - task_tg_bot.py
+  - rosyk_task13.py
 
 test-warnings: true
 
