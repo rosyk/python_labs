@@ -11,6 +11,7 @@ ignore:
   - task_numpy.py
   - printing_imitation.py
   - steam_sales
+  - rosyk_task13.py
 
 test-warnings: true
 
