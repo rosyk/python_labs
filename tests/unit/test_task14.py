@@ -1,5 +1,5 @@
 from copy import deepcopy
-from unittest.mock import patch
+from unittest.mock import patch, call
 import pytest
 from rosyk_task14 import Multiset, exel_weather
 
@@ -66,4 +66,4 @@ def test_exel_weather():
                 """
         mock_get.return_value.content = html_content.encode('utf-8')
         exel_weather('киев')
-        assert mock_wb.mock_calls[2][1] == (['2023-05-15', '20', '12'],)
+        mock_wb.assert_has_calls([call().active.append(['2023-05-22', '20', '12'])])
