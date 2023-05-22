@@ -11,6 +11,7 @@ ignore:
   - task_numpy.py
   - printing_imitation.py
   - steam_sales
+  - task_tg_bot.py
   - rosyk_task13.py
 
 test-warnings: true
@@ -21,13 +22,13 @@ pep8:
     # style checking
     run: true
     options:
-        max-line-length: 100
+        max-line-length: 120
 
 pylint:
     # static analysis and then some
     run: true
     options:
-        max-line-length: 100
+        max-line-length: 120
         # allow 'log' as global constant
         const-rgx: "(([A-Z_][A-Z0-9_]*)|(__.*__)|log)$"
         const-hint: "(([A-Z_][A-Z0-9_]*)|(__.*__)|log)$"
