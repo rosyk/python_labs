@@ -4,7 +4,7 @@ import pytest
 
 from rosyk_task8_9 import site_users_greeting, figure_name, ordinals, odd_even, number_of_days,\
     ordinary_leap_year, numbers_sum, calculator, person_on_money, cell_color,\
-    decimal_to_binary, rock_paper_scissors
+    decimal_to_binary, check_win, input_player_move, is_play_again, rock_paper_scissors
 
 
 @pytest.mark.parametrize('input_param, expected', [([], 'We need to find some users'),
@@ -81,7 +81,7 @@ def test_calculator(numbers, operator, expected, capsys):
 
 
 @pytest.mark.parametrize('input_param, expected', [(1000, '1000 - Volodymyr Vernadsky'),
-                                                   (3, 'nominal doesn`t exist')])
+                                                   (3, '3 - nominal doesn`t exist')])
 def test_persons_on_money(input_param, expected, capsys):
     person_on_money(input_param)
     captured = capsys.readouterr()
@@ -106,12 +106,23 @@ def test_decimal_to_binary(input_param, expected, capsys):
     assert captured.out.strip() == expected
 
 
-@pytest.mark.parametrize('input_param, computer_choise, expected',
-                         [(['paper', 'n'], 'rock', 'you choose paper, computer choose rock...\nyou win!'),
-                          (['paper', 'n'], 'scissors', 'you choose paper, computer choose scissors...\nyou lose!'),
-                          (['paper', 'n'], 'paper', 'you choose paper, computer choose paper...\ndraw!')])
-def test_rock_paper_scissors(input_param, computer_choise, expected, capsys):
-    with patch('random.choice', return_value=computer_choise), patch('builtins.input', side_effect=input_param):
+@pytest.mark.parametrize('player_move, computer_move, expected', [('rock', 'paper', 'you lose'), ('no', 'no', None)])
+def test_check_win(player_move, computer_move, expected):
+    assert check_win(player_move, computer_move) == expected
+
+
+def test_input_player_move():
+    with patch('builtins.input', return_value='rock'):
+        assert input_player_move(['rock', 'paper', 'scissors']) == 'rock'
+
+
+def test_is_play_again():
+    with patch('builtins.input', return_value='y'):
+        assert is_play_again()
+
+
+def test_rock_paper_scissors(capsys):
+    with patch('random.choice', return_value='rock'), patch('builtins.input', side_effect=['paper', 'n']):
         rock_paper_scissors()
         captured = capsys.readouterr()
-        assert captured.out.strip() == expected
+        assert captured.out.strip() == 'you choose paper, computer choose rock...\nyou win'

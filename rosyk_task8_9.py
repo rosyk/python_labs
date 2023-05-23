@@ -3,6 +3,22 @@ import random
 import utils
 
 
+FIGURES = ['triangle', 'rectangle', 'pentagon', 'hexagon']
+PERSONS = {1: 'Volodymyr Velykiy', 2: 'Yaroslav Mydriy', 5: 'Bohdan Hmelnitsky',
+           10: 'Ivan Mazepa', 20: 'Ivan Franko', 50: 'Myhaylo Hrushevsky',
+           100: 'Taras Shevchenko', 200: 'Lesya Ukrainka', 500: 'Grigory Skovoroda',
+           1000: 'Volodymyr Vernadsky'}
+COMBINATIONS = {('rock', 'rock'): 'draw',
+                ('paper', 'paper'): 'draw',
+                ('scissors', 'scissors'): 'draw',
+                ('rock', 'scissors'): 'you win',
+                ('rock', 'paper'): 'you lose',
+                ('paper', 'rock'): 'you win',
+                ('paper', 'scissors'): 'you lose',
+                ('scissors', 'rock'): 'you lose',
+                ('scissors', 'paper'): 'you win'}
+
+
 def site_users_greeting(users):
     if len(users) == 0:
         print('We need to find some users')
@@ -13,10 +29,9 @@ def site_users_greeting(users):
 
 
 def figure_name(sides):
-    figures = ['triangle', 'rectangle', 'pentagon', 'hexagon']
     print(
-        'the number of sides is less than 3 or more than 6' if sides < 3 or sides > 6
-        else f'it`s {figures[sides - 3]}')
+        f'it`s {FIGURES[sides - 3]}' if 2 < sides < 7
+        else 'the number of sides is less than 3 or more than 6')
 
 
 def ordinals(numbers):
@@ -46,15 +61,11 @@ def number_of_days():
 
 
 def ordinary_leap_year(year):
-    print('leap year' if year % 400 == 0 else 'ordinary year')
+    print('leap year' if ((year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)) else 'ordinary year')
 
 
 def numbers_sum():
-    numbers = []
-    n = 1
-    while n:
-        n = utils.number_validation_input()
-        numbers.append(n)
+    numbers = list(iter(lambda: utils.number_validation_input(), 0))
     print(sum(numbers))
 
 
@@ -84,19 +95,12 @@ def calculator():
 
 
 def person_on_money(nominal):
-    persons = {1: 'Volodymyr Velykiy', 2: 'Yaroslav Mydriy', 5: 'Bohdan Hmelnitsky',
-               10: 'Ivan Mazepa', 20: 'Ivan Franko', 50: 'Myhaylo Hrushevsky',
-               100: 'Taras Shevchenko', 200: 'Lesya Ukrainka', 500: 'Grigory Skovoroda',
-               1000: 'Volodymyr Vernadsky'}
-    try:
-        print(f'{nominal} - {persons[nominal]}')
-    except KeyError:
-        print('nominal doesn`t exist')
+    print(f'{nominal} - {PERSONS.get(nominal, "nominal doesn`t exist")}')
 
 
 def cell_color():
     cell = input('input cell in format a1: ')
-    if len(cell) == 2 or cell[0] in 'abcdefgh' or cell[1] in '12345678':
+    if len(cell) == 2 and cell[0] in 'abcdefgh' and cell[1] in '12345678':
         print('cell is black' if (ord(cell[0])) % 2 == int(cell[1]) % 2 else 'cell is white')
     else:
         print("incorrect cell")
@@ -118,41 +122,49 @@ def decimal_to_binary(number):
 
 
 def check_win(player_move, computer_move):
-    if player_move == computer_move:
-        return 'draw!'
-    if player_move == 'rock' and computer_move == 'scissors':
-        return 'you win!'
-    if player_move == 'scissors' and computer_move == 'paper':
-        return 'you win!'
-    if player_move == 'paper' and computer_move == 'rock':
-        return 'you win!'
-    return 'you lose!'
+    return COMBINATIONS.get((player_move, computer_move), None)
+
+
+def input_player_move(options):
+    while True:
+        move = input('input your move(rock, paper, scissors): ').lower()
+        if move not in options:
+            print(f'{move} doesn`t look like rock, paper or scissors')
+            continue
+        return move
+
+
+def is_play_again():
+    while True:
+        play_again = input('want to play again?(y/n): ').lower()
+        if play_again not in 'yn':
+            print('write only y or n')
+            continue
+        return play_again == 'y'
 
 
 def rock_paper_scissors():
     options = ['rock', 'paper', 'scissors']
     while True:
-        player_move = input('input your move(rock, paper, scissors): ').lower()
-        if player_move not in options:
-            print('wrong move')
-            continue
         computer_move = random.choice(options)
+        player_move = input_player_move(options)
         print(f'you choose {player_move}, computer choose {computer_move}...'
               f'\n{check_win(player_move, computer_move)}')
-        if input('want to play again?(y/n): ').lower() == 'n':
-            break
+        if is_play_again():
+            continue
+        break
 
 
 if __name__ == '__main__':
-    site_users_greeting(['Admin', 'Alex', 'Steve'])
-    figure_name(6)
-    ordinals(list(range(1, 10)))
-    odd_even()
-    number_of_days()
-    ordinary_leap_year(2100)
-    numbers_sum()
-    calculator()
-    person_on_money(3)
-    cell_color()
-    decimal_to_binary(155)
-    rock_paper_scissors()
+    # site_users_greeting(['Admin', 'Alex', 'Steve'])
+    figure_name(7)
+    # ordinals(list(range(1, 10)))
+    # odd_even()
+    # number_of_days()
+    # ordinary_leap_year(2100)
+    # numbers_sum()
+    # calculator()
+    # person_on_money(3)
+    # cell_color()
+    # decimal_to_binary(155)
+    # rock_paper_scissors()
